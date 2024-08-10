@@ -1,2 +1,2 @@
 plotly==5.23.0
-streamlit-dynamic-filters
+streamlit-dynamic-filters==0.1.9
