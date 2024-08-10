@@ -156,7 +156,7 @@ soal0 = statistik_alumni_lintas_angkatan(df)
 # soal0
 # Buat kolom baru untuk menampilkan progress bar sebagai teks
 soal0["Progress Bar"] = soal0["Persentase Keterisian Tracing"].apply(
-    lambda x: f"[{'█' * int(x/10)}{'░' * int((100-x)/10)}] {x}%"
+    lambda x: f"[{'█' * int(round(x)/10)}{'░' * int((100-round(x)/10)}] {round(x)}%"
 )
 
 # Tampilkan DataFrame dengan kolom "Progress Bar"
