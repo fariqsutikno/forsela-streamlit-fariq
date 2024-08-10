@@ -141,7 +141,8 @@ with col1:
   ''')
 with col2:
   st.header("Cara Pemakaian")
-  st.markdown('''  
+  st.markdown('''
+  Fitur:
     - **Melihat jumlah masing-masing data:** Letakkan kursor Anda di atas garis/kota grafik
     - **Urutkan berdasarkan kolom (pada tabel):** Tekan bagian header kolom beberapa kali dan lihat perubahannya. Sesuaikan dengan kebutuhan Anda.
     - **Fitur Full Screen, Pencarian, dan Unduh Data:** Letakkan kursor Anda pada bagian atas tabel. Klik berdasarkan kebutuhan Anda. 
@@ -153,18 +154,13 @@ with col2:
 st.header('Disclaimer Akurasi Data')
 soal0 = statistik_alumni_lintas_angkatan(df)
 # soal0
-st.dataframe(
-    soal0,
-    column_config={
-        "Persentase Keterisian Tracing": st.column_config.ProgressColumn(
-            help="Jumlah alumni yang sudah mengisi data",
-            format="%.0f%%",
-            min_value=0,
-            max_value=100,
-        ),
-    },
-    hide_index=False,
+# Buat kolom baru untuk menampilkan progress bar sebagai teks
+soal0["Progress Bar"] = soal0["Persentase Keterisian Tracing"].apply(
+    lambda x: f"[{'█' * int(x/10)}{'░' * int((100-x)/10)}] {x}%"
 )
+
+# Tampilkan DataFrame dengan kolom "Progress Bar"
+st.dataframe(soal0, hide_index=False)
 st.text("Data terakhir diupdate pada 2023")
 st.divider()
 
