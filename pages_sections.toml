@@ -1,0 +1,15 @@
+[[pages]]
+path = "dashboard.py"
+name = "Home"
+icon = "🏠"
+
+[[pages]]
+name = "Data Alumni"
+icon = "🎈️"
+is_section = true
+
+# Pages after an `is_section = true` will be indented
+[[pages]]
+path = "pages/Profile.py"
+name = "Profil Sebaran Alumni"
+icon = "💪"
